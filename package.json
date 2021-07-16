@@ -1,0 +1,27 @@
+{
+  "name": "require-approved-pull-request-action",
+  "version": "0.0.1",
+  "description": "Use this instead of the branch protection rules",
+  "main": "main.js",
+  "scripts": {
+    "build": "esbuild main.ts --bundle --platform=node --target=node12 --outfile=dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dekinderfiets/require-approved-pull-request-action.git"
+  },
+  "keywords": [],
+  "author": "Manuel Meister",
+  "license": "AGPL",
+  "bugs": {
+    "url": "https://github.com/dekinderfiets/require-approved-pull-request-action/issues"
+  },
+  "homepage": "https://github.com/dekinderfiets/require-approved-pull-request-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.8.38"
+  }
+}

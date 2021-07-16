@@ -1,0 +1,15 @@
+name: 'Require All Pull Requests approvals'
+description: 'Use this instead of the branch protection rules'
+inputs:
+  token:
+    description: 'Token to authenticate with when connecting to Github'
+    required: true
+outputs:
+  approved:
+    description: 'Is Pull Request approved'
+runs:
+  using: 'node12'
+  main: 'dist/main.js'
+branding:
+  icon: 'check-circle'
+  color: 'green'
