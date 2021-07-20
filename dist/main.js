@@ -4794,6 +4794,9 @@ var getReviewers = async (kit, context2) => {
   });
   const users = new Map();
   response.data.forEach((review) => {
+    if (!review.user) {
+      return;
+    }
     if (review.user.login === context2.payload.pull_request.user.login) {
       return;
     }

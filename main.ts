@@ -57,6 +57,9 @@ const getReviewers = async (kit, context) => {
 
     const users = new Map<String, String>();
     response.data.forEach((review) => {
+        if (!review.user) {
+            return;
+        }
         if (review.user.login === context.payload.pull_request.user.login) {
             return;
         }
