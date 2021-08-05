@@ -4790,7 +4790,8 @@ var getRequestedReviewers = async (kit, context2) => {
 var getReviewers = async (kit, context2) => {
   const response = await kit.pulls.listReviews({
     ...context2.repo,
-    pull_number: context2.payload.pull_request.number
+    pull_number: context2.payload.pull_request.number,
+    per_page: 1e4
   });
   const users = new Map();
   response.data.forEach((review) => {

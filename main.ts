@@ -52,8 +52,9 @@ const getRequestedReviewers = async (kit: InstanceType<typeof GitHub>, context) 
 const getReviewers = async (kit, context) => {
     const response = await kit.pulls.listReviews({
         ...context.repo,
-        pull_number: context.payload.pull_request.number
-    })
+        pull_number: context.payload.pull_request.number,
+		per_page: 10000,
+    });
 
     const users = new Map<String, String>();
     response.data.forEach((review) => {
