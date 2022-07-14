@@ -91,7 +91,7 @@ const decideByState = (reviewer, state) => {
 
 async function run() {
     try {
-        if (context.eventName !== 'pull_request' || context.eventName !== 'pull_request_review') {
+        if (context.eventName !== 'pull_request' && context.eventName !== 'pull_request_review') {
             setFailed(`Invalid event: ${context.eventName}, it should be use on pull_request or pull_request_review`);
             return;
         }
