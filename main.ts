@@ -30,7 +30,7 @@ const getRequestedReviewers = async (kit: InstanceType<typeof GitHub>, context) 
             org: context.repo.owner,
             team_slug: team.name
         });
-        
+
         const users = new Array<String>();
         response.data.forEach((user) => {
             if (user.login === context.payload.pull_request.user.login) {
@@ -91,14 +91,14 @@ const decideByState = (reviewer, state) => {
 
 async function run() {
     try {
-        if (context.eventName !== 'pull_request') {
-            setFailed(`Invalid event: ${context.eventName}, it should be use on pull_request`);
+        if (context.eventName !== 'pull_request' && context.eventName !== 'pull_request_review') {
+            setFailed(`Invalid event: ${context.eventName}, it should be use on pull_request or pull_request_review`);
             return;
         }
 
         const token = getInput("token");
         const kit = getOctokit(token);
-       
+
         const requestedReviewers = await getRequestedReviewers(kit, context);
         const actualReviewers = await getReviewers(kit, context);
 
